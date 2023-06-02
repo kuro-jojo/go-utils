@@ -115,9 +115,10 @@ func get(ctx context.Context, uri string, api APIService) ([]byte, int, string, 
 		return nil, 0, "", buildErrorResponse(err.Error())
 	}
 	req.Header.Set("Content-Type", "application/json")
+	logger.Infof("MAKING GET CALL bef req: %v", req)
 	addAuthHeader(req, api)
-	bod, _ := io.ReadAll(req.Body)
 	logger.Infof("MAKING GET CALL req: %v", req)
+	bod, _ := ioutil.ReadAll(req.Body)
 	logger.Infof("MAKING GET CALL body: %s", bod)
 	logger.Infof("MAKING GET CALL err: %s", err)
 	resp, err := api.getHTTPClient().Do(req)
