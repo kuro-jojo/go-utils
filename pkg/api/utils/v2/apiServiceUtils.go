@@ -117,8 +117,11 @@ func get(ctx context.Context, uri string, api APIService) ([]byte, int, string, 
 	logger.Infof("MAKING GET CALL bef req: %v", req)
 	addAuthHeader(req, api)
 	logger.Infof("MAKING GET CALL req: %v", req)
-	bod, _ := ioutil.ReadAll(req.Body)
-	logger.Infof("MAKING GET CALL body: %s", bod)
+	if req.Body !=nil {
+		bod, _ := ioutil.ReadAll(req.Body)
+		logger.Infof("MAKING GET CALL body: %s", bod)
+
+	}
 	logger.Infof("MAKING GET CALL err: %s", err)
 	resp, err := api.getHTTPClient().Do(req)
 	logger.Infof("MAKING GET CALL resp: %v", resp)
