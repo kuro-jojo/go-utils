@@ -1,12 +1,13 @@
 package logforwarder
 
 import (
-	"github.com/keptn/go-utils/pkg/sdk/connector/fake"
 	"testing"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/strutils"
-	keptnv2 "github.com/keptn/go-utils/pkg/lib/v0_2_0"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/fake"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/strutils"
+	keptnv2 "github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0"
 	"github.com/stretchr/testify/require"
 )
 

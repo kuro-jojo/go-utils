@@ -2,13 +2,14 @@ package api
 
 import (
 	"fmt"
-	oauthutils "github.com/keptn/go-utils/pkg/common/oauth2"
-	"github.com/keptn/go-utils/pkg/sdk/internal/config"
-	"github.com/stretchr/testify/assert"
 	"net/http"
 	"net/http/httptest"
 	"testing"
 	"time"
+
+	oauthutils "github.com/kuro-jojo/go-utils/pkg/common/oauth2"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/internal/config"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestSimpleClientGetter_Get(t *testing.T) {

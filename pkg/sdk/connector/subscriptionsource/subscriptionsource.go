@@ -3,15 +3,16 @@ package subscriptionsource
 import (
 	"context"
 	"errors"
-	"github.com/avast/retry-go"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
 	"sync"
 	"time"
 
+	"github.com/avast/retry-go"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+
 	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logger"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logger"
 )
 
 // ErrMaxPingRetriesExceeded is used when the subscription source was not able to

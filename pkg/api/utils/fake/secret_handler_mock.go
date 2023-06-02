@@ -4,7 +4,7 @@
 package utils_mock
 
 import (
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"sync"
 )
 

@@ -1,8 +1,9 @@
 package http
 
 import (
-	"github.com/keptn/go-utils/pkg/api/models"
 	"sync"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 )
 
 // cache is used to store key value data

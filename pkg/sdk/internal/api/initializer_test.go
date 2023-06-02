@@ -2,13 +2,14 @@ package api
 
 import (
 	"fmt"
-	keptnapi "github.com/keptn/go-utils/pkg/api/utils"
-	keptnapiv2 "github.com/keptn/go-utils/pkg/api/utils/v2"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logger"
-	"github.com/keptn/go-utils/pkg/sdk/internal/config"
-	"github.com/stretchr/testify/require"
 	"net/http"
 	"testing"
+
+	keptnapi "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	keptnapiv2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logger"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/internal/config"
+	"github.com/stretchr/testify/require"
 )
 
 type fakeHTTPClientFactory struct {

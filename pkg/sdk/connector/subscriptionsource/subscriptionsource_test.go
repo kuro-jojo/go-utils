@@ -3,15 +3,16 @@ package subscriptionsource
 import (
 	"context"
 	"fmt"
-	"github.com/keptn/go-utils/pkg/sdk/connector/fake"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
 	"sync"
 	"sync/atomic"
 	"testing"
 	"time"
 
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/fake"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+
 	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"github.com/stretchr/testify/require"
 )
 

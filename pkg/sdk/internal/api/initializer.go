@@ -2,21 +2,22 @@ package api
 
 import (
 	"fmt"
-	"github.com/benbjohnson/clock"
-	keptnapi "github.com/keptn/go-utils/pkg/api/utils"
-	keptnapiv2 "github.com/keptn/go-utils/pkg/api/utils/v2"
-	"github.com/keptn/go-utils/pkg/sdk/connector/controlplane"
-	"github.com/keptn/go-utils/pkg/sdk/connector/eventsource"
-	eventsourceHttp "github.com/keptn/go-utils/pkg/sdk/connector/eventsource/http"
-	eventsourceNats "github.com/keptn/go-utils/pkg/sdk/connector/eventsource/nats"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logforwarder"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logger"
-	"github.com/keptn/go-utils/pkg/sdk/connector/nats"
-	"github.com/keptn/go-utils/pkg/sdk/connector/subscriptionsource"
-	"github.com/keptn/go-utils/pkg/sdk/internal/config"
 	"net/http"
 	"net/url"
 	"strings"
+
+	"github.com/benbjohnson/clock"
+	keptnapi "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	keptnapiv2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/controlplane"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/eventsource"
+	eventsourceHttp "github.com/kuro-jojo/go-utils/pkg/sdk/connector/eventsource/http"
+	eventsourceNats "github.com/kuro-jojo/go-utils/pkg/sdk/connector/eventsource/nats"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logforwarder"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logger"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/nats"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/subscriptionsource"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/internal/config"
 )
 
 type InitializationResult struct {

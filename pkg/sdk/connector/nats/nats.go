@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logger"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logger"
 	"github.com/nats-io/nats.go"
 )
 

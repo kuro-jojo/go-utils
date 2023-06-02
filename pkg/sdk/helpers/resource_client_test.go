@@ -3,12 +3,13 @@ package keptn
 import (
 	"context"
 	"fmt"
-	"github.com/keptn/go-utils/pkg/api/models"
-	v2 "github.com/keptn/go-utils/pkg/api/utils/v2"
-	fake "github.com/keptn/go-utils/pkg/api/utils/v2/fake"
-	"github.com/keptn/go-utils/pkg/common/strutils"
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	v2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
+	fake "github.com/kuro-jojo/go-utils/pkg/api/utils/v2/fake"
+	"github.com/kuro-jojo/go-utils/pkg/common/strutils"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestGetResource_APIReturnsError(t *testing.T) {

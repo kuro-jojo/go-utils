@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"strings"
 
-	keptnmodels "github.com/keptn/go-utils/pkg/api/models"
-	v2 "github.com/keptn/go-utils/pkg/api/utils/v2"
+	keptnmodels "github.com/kuro-jojo/go-utils/pkg/api/models"
+	v2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
 	log "github.com/sirupsen/logrus"
 )
 

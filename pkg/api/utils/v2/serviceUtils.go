@@ -7,8 +7,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 // ServicesCreateServiceInStageOptions are options for ServicesInterface.CreateServiceInStage().

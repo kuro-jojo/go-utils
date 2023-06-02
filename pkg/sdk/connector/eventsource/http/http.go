@@ -3,13 +3,14 @@ package http
 import (
 	"context"
 	"errors"
-	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logger"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
 	"sync"
 	"time"
+
+	"github.com/benbjohnson/clock"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logger"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
 )
 
 var ErrMaxPollRetriesExceeded = errors.New("maximum retries for polling event api exceeded")

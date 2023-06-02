@@ -7,7 +7,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 const v1SequenceControlPath = "/v1/sequence/%s/%s/control"

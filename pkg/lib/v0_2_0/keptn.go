@@ -7,9 +7,9 @@ import (
 
 	cloudevents "github.com/cloudevents/sdk-go/v2"
 	"github.com/google/uuid"
-	"github.com/keptn/go-utils/config"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/lib/keptn"
+	"github.com/kuro-jojo/go-utils/config"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/lib/keptn"
 	"gopkg.in/yaml.v3"
 )
 

@@ -10,8 +10,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 // EventsGetEventsOptions are options for EventsInterface.GetEvents().

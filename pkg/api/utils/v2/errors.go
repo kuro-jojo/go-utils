@@ -3,7 +3,7 @@ package v2
 import (
 	"fmt"
 
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 )
 
 // ErrWithStatusCode message

@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"github.com/stretchr/testify/require"
 )
 

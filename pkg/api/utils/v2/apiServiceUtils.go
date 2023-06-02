@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 

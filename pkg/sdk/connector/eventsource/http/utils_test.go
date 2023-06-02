@@ -1,10 +1,11 @@
 package http
 
 import (
-	"github.com/keptn/go-utils/pkg/api/models"
+	"testing"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
-	"testing"
 )
 
 func TestAddEvent(t *testing.T) {

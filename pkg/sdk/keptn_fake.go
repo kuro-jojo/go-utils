@@ -4,15 +4,16 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/lib/v0_2_0"
-	"github.com/keptn/go-utils/pkg/sdk/connector/controlplane"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
-	"github.com/stretchr/testify/require"
 	"io/ioutil"
 	"path/filepath"
 	"testing"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/controlplane"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+	"github.com/stretchr/testify/require"
 )
 
 type FakeKeptn struct {

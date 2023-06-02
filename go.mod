@@ -1,4 +1,4 @@
-module github.com/keptn/go-utils
+module github.com/kuro-jojo/go-utils
 
 go 1.18
 

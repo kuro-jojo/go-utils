@@ -1,6 +1,6 @@
 package fake
 
-import "github.com/keptn/go-utils/pkg/api/models"
+import "github.com/kuro-jojo/go-utils/pkg/api/models"
 
 type UniformAPIMock struct {
 	RegisterIntegrationFn func(models.Integration) (string, error)

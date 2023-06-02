@@ -2,18 +2,19 @@ package nats_test
 
 import (
 	"encoding/json"
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/strutils"
-	"github.com/keptn/go-utils/pkg/lib/v0_2_0"
-	nats2 "github.com/keptn/go-utils/pkg/sdk/connector/nats"
-	"github.com/nats-io/nats-server/v2/server"
-	natstest "github.com/nats-io/nats-server/v2/test"
-	"github.com/nats-io/nats.go"
-	"github.com/stretchr/testify/require"
 	"os"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/strutils"
+	"github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0"
+	nats2 "github.com/kuro-jojo/go-utils/pkg/sdk/connector/nats"
+	"github.com/nats-io/nats-server/v2/server"
+	natstest "github.com/nats-io/nats-server/v2/test"
+	"github.com/nats-io/nats.go"
+	"github.com/stretchr/testify/require"
 )
 
 func TestNewFromEnv(t *testing.T) {

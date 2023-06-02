@@ -9,16 +9,16 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
-	sdk "github.com/keptn/go-utils/pkg/sdk/internal/api"
-	"github.com/keptn/go-utils/pkg/sdk/internal/config"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+	sdk "github.com/kuro-jojo/go-utils/pkg/sdk/internal/api"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/internal/config"
 
 	"github.com/kelseyhightower/envconfig"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	apiv2 "github.com/keptn/go-utils/pkg/api/utils/v2"
-	keptnv2 "github.com/keptn/go-utils/pkg/lib/v0_2_0"
-	"github.com/keptn/go-utils/pkg/sdk/connector/controlplane"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	apiv2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
+	keptnv2 "github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/controlplane"
 )
 
 type IKeptn interface {

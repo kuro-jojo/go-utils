@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	cloudevents "github.com/cloudevents/sdk-go/v2"
-	"github.com/keptn/go-utils/pkg/lib/keptn"
-	"github.com/keptn/go-utils/pkg/lib/v0_2_0/fake"
+	"github.com/kuro-jojo/go-utils/pkg/lib/keptn"
+	"github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0/fake"
 	"github.com/stretchr/testify/assert"
 )
 

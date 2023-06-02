@@ -2,11 +2,12 @@ package http
 
 import (
 	"fmt"
-	"github.com/avast/retry-go"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logger"
 	"time"
+
+	"github.com/avast/retry-go"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logger"
 )
 
 //go:generate moq -pkg fake -skip-ensure -out ./fake/eventAPI.go . EventAPI

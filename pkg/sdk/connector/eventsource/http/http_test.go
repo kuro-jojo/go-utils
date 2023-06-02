@@ -3,17 +3,18 @@ package http
 import (
 	"context"
 	"fmt"
-	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/common/strutils"
-	"github.com/keptn/go-utils/pkg/lib/v0_2_0"
-	"github.com/keptn/go-utils/pkg/sdk/connector/eventsource/http/fake"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
-	"github.com/stretchr/testify/require"
 	"sync"
 	"testing"
 	"time"
+
+	"github.com/benbjohnson/clock"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/common/strutils"
+	"github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/eventsource/http/fake"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+	"github.com/stretchr/testify/require"
 )
 
 func TestEventSourceCanBeStoppedViaContext(t *testing.T) {

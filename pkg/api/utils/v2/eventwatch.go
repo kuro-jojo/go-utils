@@ -6,7 +6,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 )
 
 // EventWatcher implements the logic to query for events and provide them to the client

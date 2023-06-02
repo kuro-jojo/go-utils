@@ -1,10 +1,11 @@
 package eventmatcher
 
 import (
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/lib/v0_2_0"
-	"github.com/stretchr/testify/require"
 	"testing"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0"
+	"github.com/stretchr/testify/require"
 )
 
 func TestEventMatcherUnableToDecodeEventData(t *testing.T) {

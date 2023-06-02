@@ -1,12 +1,12 @@
-module github.com/keptn/go-utils/examples/cp-connector
+module github.com/kuro-jojo/go-utils/examples/cp-connector
 
 go 1.18
 
-replace github.com/keptn/go-utils => ../../../go-utils
+replace github.com/kuro-jojo/go-utils => ../../../go-utils
 
 require (
 	github.com/benbjohnson/clock v1.3.0
-	github.com/keptn/go-utils v0.0.0-00010101000000-000000000000
+	github.com/kuro-jojo/go-utils v0.0.0-00010101000000-000000000000
 	github.com/sirupsen/logrus v1.8.1
 )
 

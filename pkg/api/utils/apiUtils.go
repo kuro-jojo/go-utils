@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	v2 "github.com/keptn/go-utils/pkg/api/utils/v2"
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	v2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 const v1EventPath = "/v1/event"

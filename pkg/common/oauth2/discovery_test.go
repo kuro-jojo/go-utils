@@ -3,12 +3,13 @@ package oauthutils
 import (
 	"context"
 	"fmt"
-	"github.com/keptn/go-utils/pkg/common/testutils"
-	"github.com/stretchr/testify/assert"
 	"io"
 	"net/http"
 	"strings"
 	"testing"
+
+	"github.com/kuro-jojo/go-utils/pkg/common/testutils"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestDiscovery(t *testing.T) {

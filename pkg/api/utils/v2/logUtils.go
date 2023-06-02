@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 const v1LogPath = "/v1/log"

@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/timeutils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/timeutils"
 	"github.com/stretchr/testify/assert"
 )
 

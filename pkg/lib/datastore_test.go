@@ -2,12 +2,13 @@ package keptn
 
 import (
 	"context"
-	"github.com/keptn/go-utils/pkg/common/timeutils"
-	"github.com/stretchr/testify/assert"
 	"net"
 	"net/http"
 	"net/http/httptest"
 	"testing"
+
+	"github.com/kuro-jojo/go-utils/pkg/common/timeutils"
+	"github.com/stretchr/testify/assert"
 )
 
 // Helper function to build a test client with a httptest server

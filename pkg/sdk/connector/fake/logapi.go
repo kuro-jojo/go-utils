@@ -5,7 +5,7 @@ package fake
 
 import (
 	"context"
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"sync"
 )
 

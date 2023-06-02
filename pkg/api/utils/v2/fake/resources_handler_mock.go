@@ -5,8 +5,8 @@ package utils_mock
 
 import (
 	"context"
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/api/utils/v2"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
 	"sync"
 )
 

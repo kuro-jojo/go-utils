@@ -1,8 +1,8 @@
 # Keptn go-utils
 
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/keptn/go-utils)
-![tests](https://github.com/keptn/go-utils/workflows/tests/badge.svg)
-[![Go Report Card](https://goreportcard.com/badge/github.com/keptn/go-utils)](https://goreportcard.com/report/github.com/keptn/go-utils)
+![tests](https://github.com/kuro-jojo/go-utils/workflows/tests/badge.svg)
+[![Go Report Card](https://goreportcard.com/badge/github.com/kuro-jojo/go-utils)](https://goreportcard.com/report/github.com/kuro-jojo/go-utils)
 
 <img src="./gopher.png" alt="go-utils-gopher" width="210"/>
 
@@ -15,10 +15,10 @@ with `area:go-utils`.
 Get the latest version using
 
 ```console
-go get github.com/keptn/go-utils
+go get github.com/kuro-jojo/go-utils
 ```
 
-Also consider browsing our [Releases Page](https://github.com/keptn/go-utils/releases) to find out about all releases.
+Also consider browsing our [Releases Page](https://github.com/kuro-jojo/go-utils/releases) to find out about all releases.
 
 ## Contributing
 
@@ -48,7 +48,7 @@ The recommended way of accessing the Keptn API using `GO` is to use the `APISet`
 You can use it by importing the following package:
 
 ```golang
-import api "github.com/keptn/go-utils/pkg/api/utils/v2"
+import api "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
 ```
 
 Then you need to create an `APISet` and provide it the information about
@@ -78,7 +78,7 @@ there is no need to talk to the Keptn API via the API gateway. In this case one 
 Import the following package:
 
 ```go
-import api "github.com/keptn/go-utils/pkg/api/utils/v2"
+import api "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
 ```
 
 Then create an `InternalAPISet`. Note, that this does *not* require you to pass the URL to the keptn API or an API token
@@ -170,7 +170,7 @@ fmt.Println(*eventContext.KeptnContext)
 
 ## Keptn GO models / structs
 
-The GO models for the Keptn API can be used by importing: `github.com/keptn/go-utils/pkg/api/models`.
+The GO models for the Keptn API can be used by importing: `github.com/kuro-jojo/go-utils/pkg/api/models`.
 
 Further, the GO models for e.g. the shipyard `yaml` etc. can be used by
-importing: `github.com/keptn/go-utils/pkg/lib/v0_2_0`
+importing: `github.com/kuro-jojo/go-utils/pkg/lib/v0_2_0`

@@ -2,10 +2,11 @@ package api
 
 import (
 	"context"
-	"github.com/keptn/go-utils/pkg/api/models"
 	"log"
 	"sort"
 	"time"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 )
 
 // EventWatcher implements the logic to query for events and provide them to the client

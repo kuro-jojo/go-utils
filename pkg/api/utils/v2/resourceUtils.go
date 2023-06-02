@@ -13,8 +13,8 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 const pathToResource = "/resource"
@@ -150,25 +150,25 @@ func (s *ResourceScope) Resource(resource string) *ResourceScope {
 }
 
 // GetProjectPath returns a string to construct the url to path eg. /<api-version>/project/<project-name>
-//or an empty string if the project is not set
+// or an empty string if the project is not set
 func (s *ResourceScope) GetProjectPath() string {
 	return buildPath(v1ProjectPath, s.project)
 }
 
 // GetStagePath returns a string to construct the url to a stage eg. /stage/<stage-name>
-//or an empty string if the stage is unset
+// or an empty string if the stage is unset
 func (s *ResourceScope) GetStagePath() string {
 	return buildPath(pathToStage, s.stage)
 }
 
 // GetServicePath returns a string to construct the url to a service eg. /service/<service-name>
-//or an empty string if the service is unset
+// or an empty string if the service is unset
 func (s *ResourceScope) GetServicePath() string {
 	return buildPath(pathToService, url.QueryEscape(s.service))
 }
 
 // GetResourcePath returns a string to construct the url to a resource eg. /resource/<escaped-resource-name>
-//or /resource if the resource scope is empty
+// or /resource if the resource scope is empty
 func (s *ResourceScope) GetResourcePath() string {
 	path := pathToResource
 	if s.resource != "" {
@@ -402,19 +402,19 @@ func (r *ResourceHandler) GetResource(ctx context.Context, scope ResourceScope, 
 	return r.GetResourceByURI(ctx, r.applyOptions(buildURI, opts.URIOptions))
 }
 
-//DeleteResource delete a resource from the URI defined by ResourceScope.
+// DeleteResource delete a resource from the URI defined by ResourceScope.
 func (r *ResourceHandler) DeleteResource(ctx context.Context, scope ResourceScope, opts ResourcesDeleteResourceOptions) error {
 	buildURI := r.buildResourceURI(scope)
 	return r.DeleteResourceByURI(ctx, r.applyOptions(buildURI, opts.URIOptions))
 }
 
-//UpdateResource updates a resource from the URI defined by ResourceScope.
+// UpdateResource updates a resource from the URI defined by ResourceScope.
 func (r *ResourceHandler) UpdateResource(ctx context.Context, resource *models.Resource, scope ResourceScope, opts ResourcesUpdateResourceOptions) (string, error) {
 	buildURI := r.buildResourceURI(scope)
 	return r.UpdateResourceByURI(ctx, r.applyOptions(buildURI, opts.URIOptions), resource)
 }
 
-//CreateResource creates one or more resources at the URI defined by ResourceScope.
+// CreateResource creates one or more resources at the URI defined by ResourceScope.
 func (r *ResourceHandler) CreateResource(ctx context.Context, resource []*models.Resource, scope ResourceScope, opts ResourcesCreateResourceOptions) (string, error) {
 	buildURI := r.buildResourceURI(scope)
 	return r.CreateResourcesByURI(ctx, r.applyOptions(buildURI, opts.URIOptions), resource)

@@ -2,13 +2,14 @@ package http
 
 import (
 	"fmt"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/common/strutils"
-	"github.com/keptn/go-utils/pkg/sdk/connector/eventsource/http/fake"
-	"github.com/stretchr/testify/require"
 	"testing"
 	"time"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/common/strutils"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/eventsource/http/fake"
+	"github.com/stretchr/testify/require"
 )
 
 func TestHTTPEventAPI_GetSend(t *testing.T) {

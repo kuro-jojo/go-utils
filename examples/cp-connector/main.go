@@ -2,17 +2,18 @@ package main
 
 import (
 	"context"
-	"github.com/benbjohnson/clock"
-	"github.com/keptn/go-utils/pkg/api/models"
-	api "github.com/keptn/go-utils/pkg/api/utils"
-	"github.com/keptn/go-utils/pkg/sdk/connector/controlplane"
-	"github.com/keptn/go-utils/pkg/sdk/connector/eventsource/http"
-	"github.com/keptn/go-utils/pkg/sdk/connector/logforwarder"
-	"github.com/keptn/go-utils/pkg/sdk/connector/subscriptionsource"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
-	"github.com/sirupsen/logrus"
 	"log"
 	"time"
+
+	"github.com/benbjohnson/clock"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/controlplane"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/eventsource/http"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/logforwarder"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/subscriptionsource"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+	"github.com/sirupsen/logrus"
 )
 
 const (

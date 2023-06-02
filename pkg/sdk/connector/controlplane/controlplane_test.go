@@ -3,15 +3,16 @@ package controlplane
 import (
 	"context"
 	"fmt"
-	"github.com/keptn/go-utils/pkg/sdk/connector/fake"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
 	"reflect"
 	"sync"
 	"testing"
 	"time"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/common/strutils"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/fake"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/common/strutils"
 	"github.com/stretchr/testify/require"
 )
 

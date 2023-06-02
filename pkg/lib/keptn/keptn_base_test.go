@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/keptn/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
 )
 
 // generateStringWithSpecialChars generates a string of the given length

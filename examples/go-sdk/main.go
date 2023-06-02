@@ -1,9 +1,10 @@
 package main
 
 import (
-	"github.com/keptn/go-utils/pkg/sdk"
-	"github.com/sirupsen/logrus"
 	"log"
+
+	"github.com/kuro-jojo/go-utils/pkg/sdk"
+	"github.com/sirupsen/logrus"
 )
 
 const greetingsTriggeredEventType = "sh.keptn.event.greeting.triggered"

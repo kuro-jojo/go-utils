@@ -7,9 +7,9 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/keptn/go-utils/pkg/api/models"
-	v2 "github.com/keptn/go-utils/pkg/api/utils/v2"
-	"github.com/keptn/go-utils/pkg/common/httputils"
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	v2 "github.com/kuro-jojo/go-utils/pkg/api/utils/v2"
+	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
 )
 
 const pathToResource = "/resource"
@@ -159,25 +159,25 @@ func (s *ResourceScope) GetResource() string {
 }
 
 // GetProjectPath returns a string to construct the url to path eg. /<api-version>/project/<project-name>
-//or an empty string if the project is not set
+// or an empty string if the project is not set
 func (s *ResourceScope) GetProjectPath() string {
 	return buildPath(v1ProjectPath, s.project)
 }
 
 // GetStagePath returns a string to construct the url to a stage eg. /stage/<stage-name>
-//or an empty string if the stage is unset
+// or an empty string if the stage is unset
 func (s *ResourceScope) GetStagePath() string {
 	return buildPath(pathToStage, s.stage)
 }
 
 // GetServicePath returns a string to construct the url to a service eg. /service/<service-name>
-//or an empty string if the service is unset
+// or an empty string if the service is unset
 func (s *ResourceScope) GetServicePath() string {
 	return buildPath(pathToService, url.QueryEscape(s.service))
 }
 
 // GetResourcePath returns a string to construct the url to a resource eg. /resource/<escaped-resource-name>
-//or /resource if the resource scope is empty
+// or /resource if the resource scope is empty
 func (s *ResourceScope) GetResourcePath() string {
 	path := pathToResource
 	if s.resource != "" {
@@ -396,25 +396,25 @@ func (r *ResourceHandler) DeleteServiceResource(project string, stage string, se
 	return r.resourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource+"/"+url.QueryEscape(resourceURI))
 }
 
-//GetResource returns a resource from the defined ResourceScope after applying all URI change configured in the options.
+// GetResource returns a resource from the defined ResourceScope after applying all URI change configured in the options.
 func (r *ResourceHandler) GetResource(scope ResourceScope, options ...URIOption) (*models.Resource, error) {
 	r.ensureHandlerIsSet()
 	return r.resourceHandler.GetResource(context.TODO(), toV2ResourceScope(scope), v2.ResourcesGetResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
-//DeleteResource delete a resource from the URI defined by ResourceScope and modified by the URIOption.
+// DeleteResource delete a resource from the URI defined by ResourceScope and modified by the URIOption.
 func (r *ResourceHandler) DeleteResource(scope ResourceScope, options ...URIOption) error {
 	r.ensureHandlerIsSet()
 	return r.resourceHandler.DeleteResource(context.TODO(), toV2ResourceScope(scope), v2.ResourcesDeleteResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
-//UpdateResource updates a resource from the URI defined by ResourceScope and modified by the URIOption.
+// UpdateResource updates a resource from the URI defined by ResourceScope and modified by the URIOption.
 func (r *ResourceHandler) UpdateResource(resource *models.Resource, scope ResourceScope, options ...URIOption) (string, error) {
 	r.ensureHandlerIsSet()
 	return r.resourceHandler.UpdateResource(context.TODO(), resource, toV2ResourceScope(scope), v2.ResourcesUpdateResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
-//CreateResource creates one or more resources at the URI defined by ResourceScope and modified by the URIOption.
+// CreateResource creates one or more resources at the URI defined by ResourceScope and modified by the URIOption.
 func (r *ResourceHandler) CreateResource(resource []*models.Resource, scope ResourceScope, options ...URIOption) (string, error) {
 	r.ensureHandlerIsSet()
 	return r.resourceHandler.CreateResource(context.TODO(), resource, toV2ResourceScope(scope), v2.ResourcesCreateResourceOptions{URIOptions: toV2URIOptions(options)})

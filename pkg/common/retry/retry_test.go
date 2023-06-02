@@ -4,10 +4,11 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"github.com/keptn/go-utils/pkg/common/retry"
-	"github.com/stretchr/testify/assert"
 	"testing"
 	"time"
+
+	"github.com/kuro-jojo/go-utils/pkg/common/retry"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestDefaultNumberOfRetriesAllFail(t *testing.T) {

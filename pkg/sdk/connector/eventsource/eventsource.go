@@ -2,9 +2,10 @@ package eventsource
 
 import (
 	"context"
-	"github.com/keptn/go-utils/pkg/api/models"
-	"github.com/keptn/go-utils/pkg/sdk/connector/types"
 	"sync"
+
+	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	"github.com/kuro-jojo/go-utils/pkg/sdk/connector/types"
 )
 
 // EventSource is anything that can be used
