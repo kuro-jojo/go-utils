@@ -424,7 +424,7 @@ func (r *ResourceHandler) CreateResource(ctx context.Context, resource []*models
 }
 
 func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*models.Resource, error) {
-	
+
 	if os.Getenv("LOG_LEVEL") != "" {
 		logLevel, err := logger.ParseLevel(os.Getenv("LOG_LEVEL"))
 		if err != nil {
@@ -433,6 +433,7 @@ func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*mo
 			logger.SetLevel(logLevel)
 		}
 	}
+	
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	body, statusCode, status, mErr := get(ctx, uri, r)
 	if mErr != nil {
