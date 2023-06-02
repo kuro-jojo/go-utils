@@ -11,7 +11,10 @@ import (
 	"io/ioutil"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
+
+	logger "github.com/sirupsen/logrus"
 
 	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	"github.com/kuro-jojo/go-utils/pkg/common/httputils"
@@ -421,6 +424,14 @@ func (r *ResourceHandler) CreateResource(ctx context.Context, resource []*models
 }
 
 func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*models.Resource, error) {
+	if os.Getenv("LOG_LEVEL") != "" {
+		logLevel, err := logger.ParseLevel(os.Getenv("LOG_LEVEL"))
+		if err != nil {
+			logger.WithError(err).Error("could not parse log level provided by 'LOG_LEVEL' env var")
+		} else {
+			logger.SetLevel(logLevel)
+		}
+	}
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	body, statusCode, status, mErr := get(ctx, uri, r)
 	if mErr != nil {
@@ -438,7 +449,7 @@ func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*mo
 
 		return nil, buildErrorResponse(fmt.Sprintf("Received unexpected response from %s and %s: %d %s", uri, body, statusCode, status)).ToError()
 	}
-
+	logger.Infof("GetResourceByURI : %s", uri)
 	resource := &models.Resource{}
 	if err := resource.FromJSON(body); err != nil {
 		return nil, err
