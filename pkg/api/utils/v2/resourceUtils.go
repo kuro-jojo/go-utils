@@ -22,7 +22,7 @@ const pathToService = "/service"
 const pathToStage = "/stage"
 const configurationServiceBaseURL = "resource-service"
 
-var ResourceNotFoundError = errors.New("Resource not found")
+var ErrorResourceNotFound = errors.New("Resource not found")
 
 // ResourcesCreateResourcesOptions are options for ResourcesInterface.CreateResources().
 type ResourcesCreateResourcesOptions struct{}
@@ -265,7 +265,7 @@ func (r *ResourceHandler) getHTTPClient() *http.Client {
 
 // CreateResources creates a resource for the specified entity.
 func (r *ResourceHandler) CreateResources(ctx context.Context, project string, stage string, service string, resources []*models.Resource, opts ResourcesCreateResourcesOptions) (*models.EventContext, *models.Error) {
-	copiedResources := make([]*models.Resource, len(resources), len(resources))
+	copiedResources := make([]*models.Resource, len(resources))
 	for i, val := range resources {
 		resourceContent := b64.StdEncoding.EncodeToString([]byte(val.ResourceContent))
 		copiedResources[i] = &models.Resource{ResourceURI: val.ResourceURI, ResourceContent: resourceContent}
@@ -313,7 +313,7 @@ func (r *ResourceHandler) UpdateResourcesByURI(ctx context.Context, uri string, 
 
 func (r *ResourceHandler) writeResources(ctx context.Context, uri string, method string, resources []*models.Resource) (string, error) {
 
-	copiedResources := make([]*models.Resource, len(resources), len(resources))
+	copiedResources := make([]*models.Resource, len(resources))
 	for i, val := range resources {
 		copiedResources[i] = &models.Resource{ResourceURI: val.ResourceURI, ResourceContent: b64.StdEncoding.EncodeToString([]byte(val.ResourceContent))}
 	}
@@ -429,14 +429,14 @@ func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*mo
 
 	if statusCode == 404 {
 		// need to handle this case differently (e.g. https://github.com/keptn/keptn/issues/1480)
-		return nil, ResourceNotFoundError
+		return nil, ErrorResourceNotFound
 	}
 	if !(statusCode >= 200 && statusCode < 300) {
 		if len(body) > 0 {
 			return nil, handleErrStatusCode(statusCode, body).ToError()
 		}
 
-		return nil, buildErrorResponse(fmt.Sprintf("Received unexpected response from %s and %s: %d %s",uri,body, statusCode, status)).ToError()
+		return nil, buildErrorResponse(fmt.Sprintf("Received unexpected response from %s and %s: %d %s", uri, body, statusCode, status)).ToError()
 	}
 
 	resource := &models.Resource{}

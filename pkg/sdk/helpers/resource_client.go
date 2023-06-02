@@ -245,7 +245,7 @@ func getResourceByFunc(
 	reErrFunc func() *ResourceEmptyError) (string, error) {
 	resource, err := resFunc()
 	if err != nil {
-		if err == v2.ResourceNotFoundError {
+		if err == v2.ErrorResourceNotFound {
 			return "", rnfErrFunc()
 		}
 

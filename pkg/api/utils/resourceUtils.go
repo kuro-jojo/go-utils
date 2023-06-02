@@ -17,7 +17,7 @@ const pathToService = "/service"
 const pathToStage = "/stage"
 const configurationServiceBaseURL = "resource-service"
 
-var ResourceNotFoundError = v2.ResourceNotFoundError
+var ResourceNotFoundError = v2.ErrorResourceNotFound
 
 type ResourcesV1Interface interface {
 	// CreateResources creates a resource for the specified entity.

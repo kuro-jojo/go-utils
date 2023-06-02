@@ -36,7 +36,7 @@ func TestGetResource_APIReturnsError(t *testing.T) {
 func TestGetResource_ResourceNotFoundError(t *testing.T) {
 	resourcesHandler := &fake.ResourcesInterfaceMock{
 		GetResourceFunc: func(ctx context.Context, scope v2.ResourceScope, opts v2.ResourcesGetResourceOptions) (*models.Resource, error) {
-			return nil, v2.ResourceNotFoundError
+			return nil, v2.ErrorResourceNotFound
 		},
 	}
 	resourceClient := NewResourceHelper(resourcesHandler)
