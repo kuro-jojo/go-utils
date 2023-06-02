@@ -5,10 +5,13 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
+	"os"
 
 	"github.com/kuro-jojo/go-utils/pkg/api/models"
+	logger "github.com/sirupsen/logrus"
 	"go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp"
 )
 
@@ -99,20 +102,34 @@ func getAndExpectSuccess(ctx context.Context, uri string, api APIService) ([]byt
 }
 
 func get(ctx context.Context, uri string, api APIService) ([]byte, int, string, *models.Error) {
+	if os.Getenv("LOG_LEVEL") != "" {
+		logLevel, err := logger.ParseLevel(os.Getenv("LOG_LEVEL"))
+		if err != nil {
+			logger.WithError(err).Error("could not parse log level provided by 'LOG_LEVEL' env var")
+		} else {
+			logger.SetLevel(logLevel)
+		}
+	}
 	req, err := http.NewRequestWithContext(ctx, "GET", uri, nil)
 	if err != nil {
 		return nil, 0, "", buildErrorResponse(err.Error())
 	}
 	req.Header.Set("Content-Type", "application/json")
 	addAuthHeader(req, api)
-
+	bod, _ := io.ReadAll(req.Body)
+	logger.Infof("MAKING GET CALL req: %v", req)
+	logger.Infof("MAKING GET CALL body: %s", bod)
+	logger.Infof("MAKING GET CALL err: %s", err)
 	resp, err := api.getHTTPClient().Do(req)
+	logger.Infof("MAKING GET CALL resp: %v", resp)
+	logger.Infof("MAKING GET CALL resp err: %s", err)
 	if err != nil {
 		return nil, 0, "", buildErrorResponse(err.Error())
 	}
 	defer resp.Body.Close()
-
+	
 	body, err := ioutil.ReadAll(resp.Body)
+	logger.Infof("MAKING GET CALL resp body: %s", body)
 	if err != nil {
 		return nil, 0, "", buildErrorResponse(err.Error())
 	}
