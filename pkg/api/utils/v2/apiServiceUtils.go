@@ -5,7 +5,6 @@ import (
 	"context"
 	"crypto/tls"
 	"fmt"
-	"io"
 	"io/ioutil"
 	"net/http"
 	"os"
@@ -128,7 +127,7 @@ func get(ctx context.Context, uri string, api APIService) ([]byte, int, string, 
 		return nil, 0, "", buildErrorResponse(err.Error())
 	}
 	defer resp.Body.Close()
-	
+
 	body, err := ioutil.ReadAll(resp.Body)
 	logger.Infof("MAKING GET CALL resp body: %s", body)
 	if err != nil {
