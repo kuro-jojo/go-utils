@@ -436,7 +436,7 @@ func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*mo
 			return nil, handleErrStatusCode(statusCode, body).ToError()
 		}
 
-		return nil, buildErrorResponse(fmt.Sprintf("Received unexpected response: %d %s", statusCode, status)).ToError()
+		return nil, buildErrorResponse(fmt.Sprintf("Received unexpected response from %s and %s: %d %s",uri,body, statusCode, status)).ToError()
 	}
 
 	resource := &models.Resource{}
