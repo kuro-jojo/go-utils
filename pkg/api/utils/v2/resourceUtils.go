@@ -424,6 +424,7 @@ func (r *ResourceHandler) CreateResource(ctx context.Context, resource []*models
 }
 
 func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*models.Resource, error) {
+	
 	if os.Getenv("LOG_LEVEL") != "" {
 		logLevel, err := logger.ParseLevel(os.Getenv("LOG_LEVEL"))
 		if err != nil {
