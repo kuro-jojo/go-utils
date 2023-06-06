@@ -13,6 +13,7 @@ import (
 	"time"
 
 	cloudevents "github.com/cloudevents/sdk-go/v2"
+	logger "github.com/sirupsen/logrus"
 
 	"github.com/kuro-jojo/go-utils/pkg/api/models"
 	api "github.com/kuro-jojo/go-utils/pkg/api/utils"
@@ -91,6 +92,7 @@ func (k *KeptnBase) GetSLIConfiguration(project string, stage string, service st
 	// get sli config from project
 	if project != "" {
 		res, err = k.ResourceHandler.GetProjectResource(project, resourceURI)
+		logger.Infof("GetSLIConfiguration proj : %v", res)
 		if err != nil {
 			// return error except "resource not found" type
 			if !strings.Contains(strings.ToLower(err.Error()), "resource not found") {
@@ -106,6 +108,8 @@ func (k *KeptnBase) GetSLIConfiguration(project string, stage string, service st
 	// get sli config from stage
 	if project != "" && stage != "" {
 		res, err = k.ResourceHandler.GetStageResource(project, stage, resourceURI)
+		logger.Infof("GetSLIConfiguration stage : %v", res)
+
 		if err != nil {
 			// return error except "resource not found" type
 			if !strings.Contains(strings.ToLower(err.Error()), "resource not found") {
@@ -121,6 +125,8 @@ func (k *KeptnBase) GetSLIConfiguration(project string, stage string, service st
 	// get sli config from service
 	if project != "" && stage != "" && service != "" {
 		res, err = k.ResourceHandler.GetServiceResource(project, stage, service, resourceURI)
+		logger.Infof("GetSLIConfiguration service : %v", res)
+
 		if err != nil {
 			// return error except "resource not found" type
 			if !strings.Contains(strings.ToLower(err.Error()), "resource not found") {
@@ -132,6 +138,7 @@ func (k *KeptnBase) GetSLIConfiguration(project string, stage string, service st
 			return nil, err
 		}
 	}
+	logger.Infof("GetSLIConfiguration  : %v", SLIs)
 
 	return SLIs, nil
 }
@@ -252,4 +259,16 @@ func GetExpBackoffTime(retryNr int) time.Duration {
 	maxInterval := float64(currentInterval) + delta
 
 	return time.Duration(minInterval + (random * (maxInterval - minInterval + 1)))
+}
+
+func configureLogger() {
+
+	if os.Getenv("LOG_LEVEL") != "" {
+		logLevel, err := logger.ParseLevel(os.Getenv("LOG_LEVEL"))
+		if err != nil {
+			logger.WithError(err).Error("could not parse log level provided by 'LOG_LEVEL' env var")
+		} else {
+			logger.SetLevel(logLevel)
+		}
+	}
 }
