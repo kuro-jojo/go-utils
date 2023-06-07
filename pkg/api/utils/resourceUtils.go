@@ -89,7 +89,7 @@ type ResourcesV1Interface interface {
 
 // ResourceHandler handles resources
 type ResourceHandler struct {
-	resourceHandler *v2.ResourceHandler
+	ResourceHandler *v2.ResourceHandler
 	BaseURL         string
 	AuthToken       string
 	AuthHeader      string
@@ -236,7 +236,7 @@ func NewResourceHandlerWithHTTPClient(baseURL string, httpClient *http.Client) *
 		BaseURL:         httputils.TrimHTTPScheme(baseURL),
 		HTTPClient:      httpClient,
 		Scheme:          "http",
-		resourceHandler: v2.NewResourceHandlerWithHTTPClient(baseURL, httpClient),
+		ResourceHandler: v2.NewResourceHandlerWithHTTPClient(baseURL, httpClient),
 	}
 }
 
@@ -265,7 +265,7 @@ func createAuthenticatedResourceHandler(baseURL string, authToken string, authHe
 		AuthToken:       authToken,
 		HTTPClient:      httpClient,
 		Scheme:          scheme,
-		resourceHandler: v2ResourceHandler,
+		ResourceHandler: v2ResourceHandler,
 	}
 }
 
@@ -288,13 +288,13 @@ func (r *ResourceHandler) getHTTPClient() *http.Client {
 // CreateResources creates a resource for the specified entity.
 func (r *ResourceHandler) CreateResources(project string, stage string, service string, resources []*models.Resource) (*models.EventContext, *models.Error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.CreateResources(context.TODO(), project, stage, service, resources, v2.ResourcesCreateResourcesOptions{})
+	return r.ResourceHandler.CreateResources(context.TODO(), project, stage, service, resources, v2.ResourcesCreateResourcesOptions{})
 }
 
 // CreateProjectResources creates multiple project resources.
 func (r *ResourceHandler) CreateProjectResources(project string, resources []*models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.CreateProjectResources(context.TODO(), project, resources, v2.ResourcesCreateProjectResourcesOptions{})
+	return r.ResourceHandler.CreateProjectResources(context.TODO(), project, resources, v2.ResourcesCreateProjectResourcesOptions{})
 }
 
 // GetProjectResource retrieves a project resource from the configuration service.
@@ -302,34 +302,34 @@ func (r *ResourceHandler) CreateProjectResources(project string, resources []*mo
 func (r *ResourceHandler) GetProjectResource(project string, resourceURI string) (*models.Resource, error) {
 	r.ensureHandlerIsSet()
 	buildURI := r.Scheme + "://" + r.BaseURL + v1ProjectPath + "/" + project + pathToResource + "/" + url.QueryEscape(resourceURI)
-	return r.resourceHandler.GetResourceByURI(context.TODO(), buildURI)
+	return r.ResourceHandler.GetResourceByURI(context.TODO(), buildURI)
 }
 
 // UpdateProjectResource updates a project resource.
 // Deprecated: use UpdateResource instead.
 func (r *ResourceHandler) UpdateProjectResource(project string, resource *models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToResource+"/"+url.QueryEscape(*resource.ResourceURI), resource)
+	return r.ResourceHandler.UpdateResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToResource+"/"+url.QueryEscape(*resource.ResourceURI), resource)
 }
 
 // DeleteProjectResource deletes a project resource.
 // Deprecated: use DeleteResource instead.
 func (r *ResourceHandler) DeleteProjectResource(project string, resourceURI string) error {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToResource+"/"+url.QueryEscape(resourceURI))
+	return r.ResourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToResource+"/"+url.QueryEscape(resourceURI))
 }
 
 // UpdateProjectResources updates multiple project resources.
 func (r *ResourceHandler) UpdateProjectResources(project string, resources []*models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateProjectResources(context.TODO(), project, resources, v2.ResourcesUpdateProjectResourcesOptions{})
+	return r.ResourceHandler.UpdateProjectResources(context.TODO(), project, resources, v2.ResourcesUpdateProjectResourcesOptions{})
 }
 
 // CreateStageResources creates a stage resource.
 // Deprecated: use CreateResource instead.
 func (r *ResourceHandler) CreateStageResources(project string, stage string, resources []*models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.CreateResourcesByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource, resources)
+	return r.ResourceHandler.CreateResourcesByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource, resources)
 }
 
 // GetStageResource retrieves a stage resource from the configuration service.
@@ -337,35 +337,35 @@ func (r *ResourceHandler) CreateStageResources(project string, stage string, res
 func (r *ResourceHandler) GetStageResource(project string, stage string, resourceURI string) (*models.Resource, error) {
 	r.ensureHandlerIsSet()
 	buildURI := r.Scheme + "://" + r.BaseURL + v1ProjectPath + "/" + project + pathToStage + "/" + stage + pathToResource + "/" + url.QueryEscape(resourceURI)
-	return r.resourceHandler.GetResourceByURI(context.TODO(), buildURI)
+	return r.ResourceHandler.GetResourceByURI(context.TODO(), buildURI)
 }
 
 // UpdateStageResource updates a stage resource.
 // Deprecated: use UpdateResource instead.
 func (r *ResourceHandler) UpdateStageResource(project string, stage string, resource *models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource+"/"+url.QueryEscape(*resource.ResourceURI), resource)
+	return r.ResourceHandler.UpdateResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource+"/"+url.QueryEscape(*resource.ResourceURI), resource)
 }
 
 // UpdateStageResources updates multiple stage resources.
 // Deprecated: use UpdateResource instead.
 func (r *ResourceHandler) UpdateStageResources(project string, stage string, resources []*models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateResourcesByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource, resources)
+	return r.ResourceHandler.UpdateResourcesByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource, resources)
 }
 
 // DeleteStageResource deletes a stage resource.
 // Deprecated: use DeleteResource instead.
 func (r *ResourceHandler) DeleteStageResource(project string, stage string, resourceURI string) error {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource+"/"+url.QueryEscape(resourceURI))
+	return r.ResourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource+"/"+url.QueryEscape(resourceURI))
 }
 
 // CreateServiceResources creates a service resource.
 // Deprecated: use CreateResource instead.
 func (r *ResourceHandler) CreateServiceResources(project string, stage string, service string, resources []*models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.CreateResourcesByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+service+pathToResource, resources)
+	return r.ResourceHandler.CreateResourcesByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+service+pathToResource, resources)
 }
 
 // GetServiceResource retrieves a service resource from the configuration service.
@@ -373,63 +373,63 @@ func (r *ResourceHandler) CreateServiceResources(project string, stage string, s
 func (r *ResourceHandler) GetServiceResource(project string, stage string, service string, resourceURI string) (*models.Resource, error) {
 	r.ensureHandlerIsSet()
 	buildURI := r.Scheme + "://" + r.BaseURL + v1ProjectPath + "/" + project + pathToStage + "/" + stage + pathToService + "/" + url.QueryEscape(service) + pathToResource + "/" + url.QueryEscape(resourceURI)
-	return r.resourceHandler.GetResourceByURI(context.TODO(), buildURI)
+	return r.ResourceHandler.GetResourceByURI(context.TODO(), buildURI)
 }
 
 // UpdateServiceResource updates a service resource.
 // Deprecated: use UpdateResource instead.
 func (r *ResourceHandler) UpdateServiceResource(project string, stage string, service string, resource *models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource+"/"+url.QueryEscape(*resource.ResourceURI), resource)
+	return r.ResourceHandler.UpdateResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource+"/"+url.QueryEscape(*resource.ResourceURI), resource)
 }
 
 // UpdateServiceResources updates multiple service resources.
 func (r *ResourceHandler) UpdateServiceResources(project string, stage string, service string, resources []*models.Resource) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateServiceResources(context.TODO(), project, stage, service, resources, v2.ResourcesUpdateServiceResourcesOptions{})
+	return r.ResourceHandler.UpdateServiceResources(context.TODO(), project, stage, service, resources, v2.ResourcesUpdateServiceResourcesOptions{})
 }
 
 // DeleteServiceResource deletes a service resource.
 // Deprecated: use DeleteResource instead.
 func (r *ResourceHandler) DeleteServiceResource(project string, stage string, service string, resourceURI string) error {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource+"/"+url.QueryEscape(resourceURI))
+	return r.ResourceHandler.DeleteResourceByURI(context.TODO(), r.Scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource+"/"+url.QueryEscape(resourceURI))
 }
 
 // GetResource returns a resource from the defined ResourceScope after applying all URI change configured in the options.
 func (r *ResourceHandler) GetResource(scope ResourceScope, options ...URIOption) (*models.Resource, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.GetResource(context.TODO(), toV2ResourceScope(scope), v2.ResourcesGetResourceOptions{URIOptions: toV2URIOptions(options)})
+	return r.ResourceHandler.GetResource(context.TODO(), toV2ResourceScope(scope), v2.ResourcesGetResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
 // DeleteResource delete a resource from the URI defined by ResourceScope and modified by the URIOption.
 func (r *ResourceHandler) DeleteResource(scope ResourceScope, options ...URIOption) error {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.DeleteResource(context.TODO(), toV2ResourceScope(scope), v2.ResourcesDeleteResourceOptions{URIOptions: toV2URIOptions(options)})
+	return r.ResourceHandler.DeleteResource(context.TODO(), toV2ResourceScope(scope), v2.ResourcesDeleteResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
 // UpdateResource updates a resource from the URI defined by ResourceScope and modified by the URIOption.
 func (r *ResourceHandler) UpdateResource(resource *models.Resource, scope ResourceScope, options ...URIOption) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.UpdateResource(context.TODO(), resource, toV2ResourceScope(scope), v2.ResourcesUpdateResourceOptions{URIOptions: toV2URIOptions(options)})
+	return r.ResourceHandler.UpdateResource(context.TODO(), resource, toV2ResourceScope(scope), v2.ResourcesUpdateResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
 // CreateResource creates one or more resources at the URI defined by ResourceScope and modified by the URIOption.
 func (r *ResourceHandler) CreateResource(resource []*models.Resource, scope ResourceScope, options ...URIOption) (string, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.CreateResource(context.TODO(), resource, toV2ResourceScope(scope), v2.ResourcesCreateResourceOptions{URIOptions: toV2URIOptions(options)})
+	return r.ResourceHandler.CreateResource(context.TODO(), resource, toV2ResourceScope(scope), v2.ResourcesCreateResourceOptions{URIOptions: toV2URIOptions(options)})
 }
 
 // GetAllStageResources returns a list of all resources.
 func (r *ResourceHandler) GetAllStageResources(project string, stage string) ([]*models.Resource, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.GetAllStageResources(context.TODO(), project, stage, v2.ResourcesGetAllStageResourcesOptions{})
+	return r.ResourceHandler.GetAllStageResources(context.TODO(), project, stage, v2.ResourcesGetAllStageResourcesOptions{})
 }
 
 // GetAllServiceResources returns a list of all resources.
 func (r *ResourceHandler) GetAllServiceResources(project string, stage string, service string) ([]*models.Resource, error) {
 	r.ensureHandlerIsSet()
-	return r.resourceHandler.GetAllServiceResources(context.TODO(), project, stage, service, v2.ResourcesGetAllServiceResourcesOptions{})
+	return r.ResourceHandler.GetAllServiceResources(context.TODO(), project, stage, service, v2.ResourcesGetAllServiceResourcesOptions{})
 }
 
 func buildPath(base, name string) string {
@@ -453,13 +453,13 @@ func toV2ResourceScope(scope ResourceScope) v2.ResourceScope {
 }
 
 func (r *ResourceHandler) ensureHandlerIsSet() {
-	if r.resourceHandler != nil {
+	if r.ResourceHandler != nil {
 		return
 	}
 
 	if r.AuthToken != "" {
-		r.resourceHandler = v2.NewAuthenticatedResourceHandler(r.BaseURL, r.AuthToken, r.AuthHeader, r.HTTPClient, r.Scheme)
+		r.ResourceHandler = v2.NewAuthenticatedResourceHandler(r.BaseURL, r.AuthToken, r.AuthHeader, r.HTTPClient, r.Scheme)
 	} else {
-		r.resourceHandler = v2.NewResourceHandlerWithHTTPClient(r.BaseURL, r.HTTPClient)
+		r.ResourceHandler = v2.NewResourceHandlerWithHTTPClient(r.BaseURL, r.HTTPClient)
 	}
 }

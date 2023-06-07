@@ -116,6 +116,7 @@ func get(ctx context.Context, uri string, api APIService) ([]byte, int, string, 
 	req.Header.Set("Content-Type", "application/json")
 	logger.Infof("MAKING GET CALL bef req: %v", req)
 	addAuthHeader(req, api)
+	
 	logger.Infof("MAKING GET CALL req: %v and %v", req, api)
 	if req.Body !=nil {
 		bod, _ := ioutil.ReadAll(req.Body)
