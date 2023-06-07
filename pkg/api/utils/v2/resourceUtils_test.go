@@ -67,7 +67,7 @@ func TestResourceHandler_buildResourceURI(t *testing.T) {
 	}
 
 	r := &ResourceHandler{
-		baseURL: configurationServiceBaseURL,
+		BaseURL: configurationServiceBaseURL,
 		scheme:  scheme,
 	}
 

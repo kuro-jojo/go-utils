@@ -21,7 +21,7 @@ func TestApiSetInternalMappings(t *testing.T) {
 		assert.Equal(t, DefaultInClusterAPIMappings[ShipyardController], internal.Sequences().(*SequenceControlHandler).baseURL)
 		assert.Equal(t, DefaultInClusterAPIMappings[ShipyardController], internal.Stages().(*StageHandler).baseURL)
 		assert.Equal(t, DefaultInClusterAPIMappings[SecretService], internal.Secrets().(*SecretHandler).baseURL)
-		assert.Equal(t, DefaultInClusterAPIMappings[ConfigurationService], internal.Resources().(*ResourceHandler).baseURL)
+		assert.Equal(t, DefaultInClusterAPIMappings[ConfigurationService], internal.Resources().(*ResourceHandler).BaseURL)
 		assert.Equal(t, DefaultInClusterAPIMappings[ShipyardController], internal.Projects().(*ProjectHandler).baseURL)
 	})
 
@@ -45,7 +45,7 @@ func TestApiSetInternalMappings(t *testing.T) {
 		assert.Equal(t, overrideMappings[ShipyardController], internal.Sequences().(*SequenceControlHandler).baseURL)
 		assert.Equal(t, overrideMappings[ShipyardController], internal.Stages().(*StageHandler).baseURL)
 		assert.Equal(t, overrideMappings[SecretService], internal.Secrets().(*SecretHandler).baseURL)
-		assert.Equal(t, overrideMappings[ConfigurationService], internal.Resources().(*ResourceHandler).baseURL)
+		assert.Equal(t, overrideMappings[ConfigurationService], internal.Resources().(*ResourceHandler).BaseURL)
 		assert.Equal(t, overrideMappings[ShipyardController], internal.Projects().(*ProjectHandler).baseURL)
 	})
 

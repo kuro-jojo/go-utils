@@ -104,9 +104,9 @@ type ResourcesInterface interface {
 
 // ResourceHandler handles resources
 type ResourceHandler struct {
-	baseURL    string
-	authToken  string
-	authHeader string
+	BaseURL    string
+	AuthToken  string
+	AuthHeader string
 	httpClient *http.Client
 	scheme     string
 }
@@ -181,7 +181,7 @@ func (s *ResourceScope) GetResourcePath() string {
 }
 
 func (r *ResourceHandler) buildResourceURI(scope ResourceScope) string {
-	buildURI := r.scheme + "://" + r.baseURL + scope.GetProjectPath() + scope.GetStagePath() + scope.GetServicePath() + scope.GetResourcePath()
+	buildURI := r.scheme + "://" + r.BaseURL + scope.GetProjectPath() + scope.GetStagePath() + scope.GetServicePath() + scope.GetResourcePath()
 	return buildURI
 }
 
@@ -242,24 +242,24 @@ func NewAuthenticatedResourceHandler(baseURL string, authToken string, authHeade
 
 func createResourceHandler(baseURL string, authToken string, authHeader string, httpClient *http.Client, scheme string) *ResourceHandler {
 	return &ResourceHandler{
-		baseURL:    httputils.TrimHTTPScheme(baseURL),
-		authHeader: authHeader,
-		authToken:  authToken,
+		BaseURL:    httputils.TrimHTTPScheme(baseURL),
+		AuthHeader: authHeader,
+		AuthToken:  authToken,
 		httpClient: httpClient,
 		scheme:     scheme,
 	}
 }
 
 func (r *ResourceHandler) getBaseURL() string {
-	return r.baseURL
+	return r.BaseURL
 }
 
 func (r *ResourceHandler) getAuthToken() string {
-	return r.authToken
+	return r.AuthToken
 }
 
 func (r *ResourceHandler) getAuthHeader() string {
-	return r.authHeader
+	return r.AuthHeader
 }
 
 func (r *ResourceHandler) getHTTPClient() *http.Client {
@@ -283,27 +283,27 @@ func (r *ResourceHandler) CreateResources(ctx context.Context, project string, s
 	}
 
 	if project != "" && stage != "" && service != "" {
-		return postWithEventContext(ctx, r.scheme+"://"+r.baseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+service+pathToResource, requestStr, r)
+		return postWithEventContext(ctx, r.scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+service+pathToResource, requestStr, r)
 	} else if project != "" && stage != "" && service == "" {
-		return postWithEventContext(ctx, r.scheme+"://"+r.baseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource, requestStr, r)
+		return postWithEventContext(ctx, r.scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToResource, requestStr, r)
 	} else {
-		return postWithEventContext(ctx, r.scheme+"://"+r.baseURL+v1ProjectPath+"/"+project+"/"+pathToResource, requestStr, r)
+		return postWithEventContext(ctx, r.scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+"/"+pathToResource, requestStr, r)
 	}
 }
 
 // CreateProjectResources creates multiple project resources.
 func (r *ResourceHandler) CreateProjectResources(ctx context.Context, project string, resources []*models.Resource, opts ResourcesCreateProjectResourcesOptions) (string, error) {
-	return r.CreateResourcesByURI(ctx, r.scheme+"://"+r.baseURL+v1ProjectPath+"/"+project+pathToResource, resources)
+	return r.CreateResourcesByURI(ctx, r.scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToResource, resources)
 }
 
 // UpdateProjectResources updates multiple project resources.
 func (r *ResourceHandler) UpdateProjectResources(ctx context.Context, project string, resources []*models.Resource, opts ResourcesUpdateProjectResourcesOptions) (string, error) {
-	return r.UpdateResourcesByURI(ctx, r.scheme+"://"+r.baseURL+v1ProjectPath+"/"+project+pathToResource, resources)
+	return r.UpdateResourcesByURI(ctx, r.scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToResource, resources)
 }
 
 // UpdateServiceResources updates multiple service resources.
 func (r *ResourceHandler) UpdateServiceResources(ctx context.Context, project string, stage string, service string, resources []*models.Resource, opts ResourcesUpdateServiceResourcesOptions) (string, error) {
-	return r.UpdateResourcesByURI(ctx, r.scheme+"://"+r.baseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource, resources)
+	return r.UpdateResourcesByURI(ctx, r.scheme+"://"+r.BaseURL+v1ProjectPath+"/"+project+pathToStage+"/"+stage+pathToService+"/"+url.QueryEscape(service)+pathToResource, resources)
 }
 
 func (r *ResourceHandler) CreateResourcesByURI(ctx context.Context, uri string, resources []*models.Resource) (string, error) {
@@ -433,7 +433,7 @@ func (r *ResourceHandler) GetResourceByURI(ctx context.Context, uri string) (*mo
 			logger.SetLevel(logLevel)
 		}
 	}
-	
+
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	body, statusCode, status, mErr := get(ctx, uri, r)
 	if mErr != nil {
